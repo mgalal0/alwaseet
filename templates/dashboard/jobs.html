@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Jobs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All Jobs</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Job Name</th>
+                    <th>Salary</th>
+                    <th>Experience</th>
+                    <th>Education Level</th>
+                    <th>Working Hours</th>
+                    <th>Job Title</th>
+                    <th>Gender</th>
+                    <th>Saudi Arabia Region</th>
+                    <th>Photo</th>
+                    <th>Job Skills</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                    <tr>
+                        <td>{{ job.job_name }}</td>
+                        <td>{{ job.salary }}</td>
+                        <td>{{ job.experience }}</td>
+                        <td>{{ job.education_level }}</td>
+                        <td>{{ job.working_hours }}</td>
+                        <td>{{ job.job_title }}</td>
+                        <td>{{ job.gender }}</td>
+                        <td>{{ job.saudi_arabia_region }}</td>
+                        <td>
+                            {% if job.photo %}
+                            <img src="{{ url_for('dashboard.uploaded_file', filename=job.photo.replace('\\', '/')) }}" alt="Job Photo" style="max-width: 100px;">
+                            {% else %}
+                                No Photo Available
+                            {% endif %}
+                        </td>
+                        
+                                                <td>
+                            {% for skill in job.job_skills %}
+                                {{ skill.skill_text }}
+                                {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ url_for('dashboard.delete_job', job_id=job.id) }}" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

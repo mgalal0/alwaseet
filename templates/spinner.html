@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <!-- aos liberary --------------- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+</head>
+<body>
+    <div id="spinner" class="spinner-overlay">
+        <div class="lds-ripple"><div></div><div></div></div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+      // Function to hide the spinner and show the content
+      function hideSpinner() {
+          document.getElementById('spinner').style.display = 'none';
+          document.querySelector('.body-content').style.display = 'block';
+          AOS.init({
+              offset: 120,
+              delay: 0,
+              duration: 400,
+              easing: 'ease',
+              once: false,
+              mirror: false,
+              anchorPlacement: 'top-bottom',
+          });
+      }
+
+      // Event listener for page load
+      window.addEventListener('load', function() {
+          setTimeout(hideSpinner, 1000); // Adding a slight delay for demonstration
+      });
+  </script>
+</body>
+</html>

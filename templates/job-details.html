@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if request.cookies.get('lang') == 'en' %}
+    <title>Job Details</title>
+{% else %}
+    <!-- Arabic title -->
+    <title> تفاصيل الوظيفة</title>
+{% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jobs.css') }}">
+    <!-- Bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #210D35 !important;
+        }
+        .job-description {
+            white-space: pre-wrap; /* Preserves spaces and line breaks */
+        }
+    </style>
+</head>
+<body>
+    {% include 'spinner.html' %}
+    <main class="body-content">
+        {% include 'nav.html' %}
+        <!-- Start hero-section -->
+        <section class="job-details-hero" >
+            <div class="container">
+                <div class="overlay">
+                    <div class="hero-content">
+                        <h2 style="margin-left:10px;"data-aos="flip-left" data-aos-duration="400" data-aos-delay="300"  data-aos-easing="linear">{{ job.job_name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Start details section -->
+        <section class="details" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400"  data-aos-easing="linear">
+            <div class="container position-relative">
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <div class="sidebar" >
+                            <div class="req">
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/jobs-imgs/1.svg') }}" alt="">
+                                    <li> Salary: {{ job.salary }}</li>
+                                </div>
+                                <br>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/jobs-imgs/2.svg') }}" alt="">
+                                    <li> Experience ({{ job.experience }} Years)</li>
+                                </div>
+                                <br>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/jobs-imgs/3.svg') }}" alt="">
+                                    <li> Education level ({{ job.education_level }})</li>
+                                </div>
+                                <br>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/jobs-imgs/4.svg') }}" alt="">
+                                    <li> Working hours ({{ job.working_hours }})</li>
+                                </div>
+                                <br>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/jobs-imgs/5.svg') }}" alt="">
+                                    <li> Saudi Arabia ({{ job.saudi_arabia_region }})</li>
+                                </div>
+                                <br>
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ url_for('static', filename='images/jobs-imgs/6.svg') }}" alt="">
+                                    <li> Gender ({{ job.gender }})</li>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="skills">
+                                <h2>Business skills</h2>
+                                <div class="skills-list d-flex justify-content-between">
+                                    <ul>
+                                        {% for skill in job.job_skills %}
+                                        <li>{{ skill.skill_text }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="more-info">
+                            <h2>Description</h2>
+                            <p class="">
+                                {{ job.job_title |  safe }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="status">
+                    <h5>{{ job.created_at.strftime('%m / %d / 20%y') }}</h5>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Start job-apply-section -->
+        <section class="job-apply" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300"  data-aos-easing="linear">
+            <div class="container">
+                <h2 data-aos="zoom-in" data-aos-duration="400" data-aos-delay="400"  data-aos-easing="linear">Personal information</h2>
+                <!-- Flash messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="alert-container">
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                <!-- User form -->
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="row g-5">
+                        <div class="col-md-5">
+                            <label for="first_name">First name</label>
+                            <input type="text" name="first_name" placeholder="Your first Name" class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" required placeholder="Your Last Name" class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="gender">Gender</label>
+                            <select name="gender" required class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Date of birth</label>
+                            <input type="date" name="date_of_birth" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Nationality</label>
+                            <input type="text" name="nationality" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Country</label>
+                            <input type="text" name="country" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Years of Experience</label>
+                            <input type="number" name="years_of_experience" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Education Level</label>
+                            <input type="text" name="education_level" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Email</label>
+                            <input type="email" name="email" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Contact Number</label>
+                            <input type="tel" name="contact_number" placeholder="+966" required class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Upload CV</label>
+                            <input type="file" name="cv" accept=".pdf,.doc,.docx" required class="form-control custom-file-input">
+                        </div>
+                        <div class="col-md-5 d-flex flex-column justify-content-end">
+                            <button class="w-100">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        {% include 'footer.html' %}
+    </main>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 33,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
+</body>
+</html>

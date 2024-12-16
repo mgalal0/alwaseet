@@ -1,0 +1,88 @@
+<!-- google font link ---- -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<body>
+<div class="sidebar-cont">
+    <div class="sidebar hidden" id="sidebar">
+        <div class="logo text-center mb-2">
+            <a href="{{ url_for('home.home_page') }}">
+                <img src="{{ url_for('static', filename='logo (1).png') }}" alt="">
+            </a>
+           
+        </div>
+        <div class="links">
+            <ul>
+                <li id="link-jobs">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <a href="{{ url_for('dashboard.admin') }}" class="">List of jobs</a>
+                </li>
+                <li id="link-post-job">
+                    <i class="fa-solid fa-users"></i>
+                    <a href="{{ url_for('dashboard.create_job') }}">Post your job</a>
+                </li>
+                <li id="link-admins">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <a href="{{ url_for('dashboard.show_users') }}">Admins</a>
+                </li>
+                <li id="link-signout">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <a href="{{ url_for('dashboard.logout') }}">Sign out</a>
+                </li>
+
+                <li id="link-signout">
+                    <i class="fa-solid fa-home"></i>
+                    <a href="/home">Back to home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+
+<style>
+
+
+
+
+</style>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const links = document.querySelectorAll('.links ul li');
+
+    // Function to set active link based on current URL
+    function setActiveLink() {
+        const currentPath = window.location.pathname;
+        links.forEach(link => {
+            const anchor = link.querySelector('a');
+            if (anchor && anchor.getAttribute('href') === currentPath) {
+                link.classList.add('active-link');
+            } else {
+                link.classList.remove('active-link');
+            }
+        });
+    }
+
+    setActiveLink(); // Set active link on page load
+
+    links.forEach(link => {
+        link.addEventListener('click', function() {
+            // Remove active class from all links
+            links.forEach(link => link.classList.remove('active-link'));
+            
+            // Add active class to the clicked link
+            this.classList.add('active-link');
+        });
+    });
+});
+
+
+    </script>
+    
+    

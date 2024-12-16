@@ -1,0 +1,372 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Poppins", sans-serif;
+}
+.sidebar.hidden {
+    transform: translateX(0%);
+}
+
+/* Basic toggler styles */
+.sidebar-toggler {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999999999999999999999999;
+    background-color:#210D35 ;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Show toggler and hide sidebar on smaller screens */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar-toggler {
+        display: block;
+    }
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+.sub-button , .cancel-button {
+    background-color:#210D35 ;
+    color: #fff;
+    padding: 8px 30px;
+    border: none;
+    outline: none;
+}
+.sub-button {
+    background-color:#210D35 ;
+}
+.actions-btn {
+    background-color: white;
+    width: 30px;
+    padding: 5px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height: 30px;
+    border: 2px solid #00091B;
+    color: #00091B;
+    border-radius: 50%;
+
+}
+.edit-btn {
+    color:#00091B ;
+}
+.delete-form {
+    padding: 0.25rem 1rem !important;
+}
+.cancel-button {
+    background-color: #FF1212B5;
+
+}
+.admin-info {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+.admin-info i {
+    font-size: 35px;
+}
+.admin-info h5 {
+    font-size: 12px;
+    font-weight: 500;
+}
+.all-jobs {
+  position: relative;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 20%;
+    color: #fff;
+    height: 100%;
+    background-color: #210D35;
+    border-radius: 0 25px 25px 0;
+    z-index: 9999999;
+}
+
+/* }
+.sidebar .links ul li a.active {
+    color: #00ff7b; Example color, adjust as needed
+    font-weight: bold; Example style, adjust as needed
+}  */
+
+.sidebar .img {
+    border-radius: 0 25px 25px 0;
+}
+.sidebar ul {
+    margin: 0;
+    padding-left: 30px;
+    padding-right: 13px;
+}
+.sidebar ul li {
+    margin-bottom: 33px;
+}
+.sidebar ul a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+.active-link > a, .active-link > i {
+    color:#210d35 !important; /* Change to red when active */
+    font-weight: bold; /* Optional: makes the active link stand out */
+}
+
+
+
+.sidebar .active-link {
+    background-color: aliceblue; /* Desired background color for the active link */
+}
+ .sidebar ul li {
+    background-color: #210d35;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.sidebar i {
+    margin-right: 16px;
+    font-size: 25px;
+}
+.sidebar-cont .navbar {
+    display : none !important ;
+}
+/* @media(max-width:992px) {
+    .sidebar-cont .navbar {
+        display : block !important ;
+        background-color: #131523;
+        color:#fff !important;
+        height: 100% !important;
+    }
+    .sidebar-cont .sidebar{
+        display: none;
+    }
+} */
+.page-content {
+    position: absolute;
+    left: calc(20% + 10px);
+    top: 20px;
+    margin-right: 10px;
+    width: 75%;
+    height: 100%;
+}
+.page-content .container-box {
+    background-color: #FAFAFA;
+    padding: 17px;
+    border-radius: 12px;
+}
+.page-content .remove-icon {
+    color: #FF2354;
+    border:none;
+    background-color: transparent;
+}
+.page-content .remove-icon i {
+    font-size: 20px;
+}
+/* job-cards --------------------------- */
+.page-content .job-card  , .page-content .admin-card{
+    border-radius: 12px;
+    padding: 15px 10px !important;
+}
+.page-content .job-img {
+    width: 100px;
+    height:100px
+}
+.page-content .job-img img {
+    width:100%;
+    height:100%;
+    object-fit: cover; 
+}
+.page-content .job-card {
+    min-height:250px;
+}
+.page-content .admin-card {
+    min-height:150px;
+}
+.page-content .job-name h4 , .page-content .user-info h4 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 47px;
+}
+.page-content .job-salary img{
+   width: 20px;
+}
+.page-content .job-salary h5 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.5px;
+    margin-left: 10px;
+    margin-top: 5px;
+
+}
+.page-content .desc p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 10px;
+    color:#595959;
+}
+.page-content .job-applications {
+    margin-bottom: 7px;
+}
+.page-content .job-applications h4  , .page-content .job-applications span {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+.page-content .more-btn {
+    background-color:#210D35 ;
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 12px;
+    
+}
+
+@media(max-width:992px) {
+    .page-content   {
+        left: calc(20% + 20px);
+       
+    }
+    .sidebar ul a {
+        font-size: 14px;
+    }
+    .sidebar i {
+        margin-right: 6px;
+        font-size: 15px;
+    }
+}
+/* more-info-page -------------------------------------------------------- */
+.more-info .job-hero-img {
+    background-image: url(job-hero.jpg);
+    background-size: cover;
+    border-radius: 10px;
+    height: 50vh;
+}
+.more-info .job-hero-img .overlay {
+    background: linear-gradient(357.47deg, #000000 -21.84%, rgba(0, 0, 0, 0) 98.46%);
+    height: 100%;
+}
+.more-info h2 {
+    font-size:32px ;
+    font-weight: 600;
+    line-height:47px ;
+    margin:20px 0;
+}
+.more-info  .req {
+    padding-bottom: 10px;
+}
+.more-info  .req ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.more-info  .req ul li {
+    font-size:20px ;
+    font-weight: 400;
+    line-height:17.6px ;
+    margin-bottom: 15px;
+}
+.more-info .skills {
+    padding-bottom: 10px;
+}
+.more-info .skills .skill-card {
+    background-color: #00091B;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.more-info .skills .skill-card span {
+    font-weight: 400;
+    font-size: 20px;
+}
+/* log-in-form page   */
+.log-in {
+    background-image: url(job-hero.jpg);
+    height: 100vh;
+    background-size: cover;
+  
+}
+.log-in .overlay {
+    background: linear-gradient(180deg, #191382 0%, rgba(217, 217, 217, 0) 100%);
+    height: 100%;
+
+}
+.log-in .container , .log-in .log-in-form {
+    height: 100%;
+  
+}
+.log-in .form {
+    padding:43px 60px;
+    border-radius: 25px;
+}
+.log-in h4 {
+    color:#131523;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44px;
+}
+.log-in p {
+    color: #5A607F;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+
+}
+.log-in label {
+    margin-bottom: 10px;
+}
+.log-in .submit-btn {
+    margin-top: 26px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.log-in button {
+    background-color:#1E5EFF;
+    border: none;
+    outline:none;
+    color: #fff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+}
+@media(max-width:992px) {
+    .log-in .log-in-form {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+/* post-job page --------------- */
+.post-job .submit-btn {
+    margin-top: 10px;
+}
+
+/* profile-settings-page --------------------------- */
+
+/* admins-page ------------------------------------- */
+.admins label {
+    margin-bottom: 10px;
+}
+.modal-heading {
+    color: #00091B;
+}

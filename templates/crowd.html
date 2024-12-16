@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if request.cookies.get('lang') == 'en' %}
+    <title>{{ page_title.en }}</title>
+{% else %}
+    <!-- Arabic title -->
+    <title>{{ page_title.ar }}</title>
+{% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+         <!-- bootstrap link ------- -->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ <!-- CAIRO FONT  -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
+ {% include 'layout.html' %}
+ <!-- Font Changer -->
+ {% if request.cookies.get('lang') == 'en' %}
+ <html dir="ltr"> 
+   {% elif request.cookies.get('lang') == 'ar' %}
+   <html dir="rtl">
+    <style>
+      *{
+        font-family: 'Cairo', sans-serif;
+    }
+    </style>
+     {% endif %}
+
+    <style>
+        body { 
+            background-color:  #0E011B !important;
+
+        }
+        .serv-slider .owl-next {
+        top:calc(28% +  10px) !important;
+     
+   
+        }
+       .serv-slider .owl-prev {
+    bottom:calc(28% - 20px) !important;
+}
+    </style>
+    
+</head>
+<body>
+  {% include 'spinner.html' %}
+  <main class="body-content">
+  {% include 'nav.html' %}
+
+
+  {% include 'servbanner.html' %}
+  
+  {% include 'serv-slider.html' %}
+  
+  
+  {% include 'galarywithsum.html' %}
+  
+  
+  
+  <div class="iiii ">
+      {% for _ in range(2) %}
+  <div class="main-squares">
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  <div class="sqaure-color-up "></div>
+  
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  <div class="sqaure-color-down "></div>
+  
+  
+  
+  </div>
+  {% endfor %}
+  
+  
+  
+  <div class="iii">
+  
+  
+  
+      {% include 'album.html' %}
+     <!-- cards -------------------------------------- -->
+        {% include 'primary.html' %}
+      {% include 'footer.html' %}
+  
+  
+  </div>
+</main>
+
+
+<!--  Galary With Sum -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentIndex = 0;
+        var translationHeaders = document.querySelectorAll('.content h3');
+        var translationParagraphs = document.querySelectorAll('.content p');
+        var cards = document.querySelectorAll('.thumbnail .item');
+        var container = document.querySelector('.serv');
+        var rangeNumber = document.querySelector('.main-range h4');
+        var vectors = document.querySelectorAll('.vector');
+        var backgroundImages = [
+            'url("/static/images/galarywithsum/serv3/background1.png")',
+            'url(/static/images/galarywithsum/serv3/background2.png)',
+            'url(/static/images/galarywithsum/serv3/background3.png)',
+            'url(/static/images/galarywithsum/serv3/background4.png)',
+            'url(/static/images/galarywithsum/serv3/background5.png)',
+            'url(/static/images/galarywithsum/serv3/background6.png)',
+            'url(/static/images/galarywithsum/serv3/background7.png)',
+            'url(/static/images/galarywithsum/serv3/background8.png)',
+
+        ];
+  
+        function displayTranslation(index) {
+          translationHeaders.forEach(function(header) {
+              header.style.display = 'none';
+          });
+          translationParagraphs.forEach(function(paragraph) {
+              paragraph.style.display = 'none';
+          });
+  
+          translationHeaders[index].style.display = 'block';
+          translationParagraphs[index].style.display = 'block';
+      }
+  
+      function updateImage(index) {
+          var totalCards = cards.length;
+          var newIndex = (index + totalCards) % totalCards;
+  
+          container.style.backgroundImage = backgroundImages[newIndex];
+          currentIndex = newIndex;
+  
+          // Move the selected card to the first position without transition
+          var selectedCard = cards[newIndex];
+          var parent = selectedCard.parentNode;
+  
+          // Remove transition to avoid animation while moving the card
+          selectedCard.style.transition = 'none';
+  
+          // Move the selected card to the first position
+          parent.insertBefore(selectedCard, parent.firstChild);
+  
+          // Force a reflow to make sure the browser registers the position change
+          selectedCard.offsetHeight; // This line forces a reflow
+  
+          // Reset all cards' styles
+          cards.forEach(function(card) {
+              card.style.transform = 'scale(0.9)';
+              card.style.transition = 'transform 0.5s';
+          });
+  
+          // Scale up the first card with a delay
+          setTimeout(function() {
+              selectedCard.style.transform = 'scale(1.1)';
+              selectedCard.style.transition = 'transform 0.5s';
+          }, 50); // Small delay to ensure the transition is applied after moving
+  
+          // Update vectors' outline
+          vectors.forEach(function(vector, i) {
+              vector.querySelector('.vector-2').style.outlineWidth = i === currentIndex ? '10px' : '5px';
+          });
+  
+          displayTranslation(currentIndex);
+          rangeNumber.textContent = currentIndex + 1;
+          updateRangeValueWidth(currentIndex);
+      }
+  
+      function updateRangeValueWidth(index) {
+          var totalCards = backgroundImages.length;
+          var widthPercentage = (index + 1) / totalCards * 100;
+          document.querySelector('.range-value').style.width = widthPercentage + '%';
+      }
+  
+      displayTranslation(0);
+  
+      document.getElementById("nextButton").addEventListener("click", function() {
+          updateImage(currentIndex + 1);
+      });
+  
+      document.getElementById("prevButton").addEventListener("click", function() {
+          updateImage(currentIndex - 1);
+      });
+  
+      vectors.forEach(function(vector, index) {
+          vector.addEventListener("click", function() {
+              updateImage(index);
+          });
+      });
+  
+      // Initial setup
+      updateImage(0);
+  });
+  
+  </script>
+   
+  <!--  End  -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if request.cookies.get('lang') == 'en' %}
+    <title>{{ page_title.en }}</title>
+{% else %}
+    <!-- Arabic title -->
+    <title>{{ page_title.ar }}</title>
+{% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jobs.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    
+    
+    {% if request.cookies.get('lang') == 'en' %}
+    <html dir="ltr"> 
+      {% elif request.cookies.get('lang') == 'ar' %}
+      <html dir="ltr">
+        <style>
+          body {
+            font-family: "Cairo" !important ;
+          }
+        </style>
+    {% endif %}
+    
+
+    <style>
+        body {
+            background-color: #210D35 !important;
+        }
+    </style>
+</head>
+<body>
+    {% include 'layout.html' %}
+    {% include 'spinner.html' %}
+    <main class="body-content">
+        {% include 'nav.html' %}
+        <section class="job-hero">
+            <div class="container">
+                <div class="overlay">
+                    <div class="logo">
+                        <img src="{{ url_for('static', filename='images/jobs-imgs/logo.svg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="jobs" data-aos="fade-up" data-aos-duration="400" data-aos-delay="200"  data-aos-easing="linear">
+            <div class="container">
+                <div class="heading text-white">
+                    {% if request.cookies.get('lang') == 'en' %}
+                    <h2 class="text-center" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300"  data-aos-easing="linear">Alwaseet jobs</h2>
+                    <p class="text-center" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400"  data-aos-easing="linear">Apply for the job</p>
+                    {% elif request.cookies.get('lang') == 'ar' %}
+                    <h2 class="text-center" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300"  data-aos-easing="linear">وظائف الوسيط</h2>
+                    <p class="text-center" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400"  data-aos-easing="linear">التقدم للوظيفة</p>
+                    {% endif %}
+    
+                </div>
+                <div class="row">
+                    {% for job in jobs %}
+                    <div class="col-md-6 col-lg-4 box">
+                        <div class="job-card" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="400"  data-aos-easing="linear">
+                            <div class="wrapper">
+                                <div  class="img ">
+                                    {% if job.photo %}
+                                    <img  src="{{ url_for('dashboard.uploaded_file', filename=job.photo.replace('\\', '/')) }}" alt="Job Photo" style="max-width: 100px;">
+                                    {% else %}
+                                        No Photo Available
+                                    {% endif %}                             
+                                </div>
+                                <div class="job-status">
+                                    <h5> {{ job.created_at.strftime('%m / %d / 20%y') }}</h5>
+                                </div>
+                                <div class="job-details desc">
+                                    <h3>{{ job.job_name }}</h3>
+                                    <p >{{ job.job_title  |  remove_br }}</p>
+                                    <div class="salary-time d-flex justify-content-between">
+                                        <div class="salary">
+                                            <h5>
+                                                <img src="{{ url_for('static', filename='images/jobs-imgs/wallet.svg') }}" alt="" class="me-2">Salary: {{ job.salary }}
+                                            </h5>
+                                        </div>
+                                        <div class="salary">
+                                            <h5>
+                                                <img src="{{ url_for('static', filename='images/jobs-imgs/calender.svg') }}" alt=""> {{ job.working_hours }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                 
+                            </div>
+                         
+                            </div>
+                            <div class="action-btn">
+                                <button>
+                                    <a href="{{ url_for('home.get_job_details', job_id=job.id) }}" class="apply-btn">Apply for a job</a>
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% include 'album.html' %}
+        {% include 'footer.html' %}
+    </main>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 33,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
+
+    <script>
+        // for slicing the text on dashboard card 
+document.addEventListener("DOMContentLoaded", function() {
+    const maxLength = 160; // Adjust as needed
+    const descElements = document.querySelectorAll('.desc p');
+
+    descElements.forEach(function(descElement) {
+        let text = descElement.innerHTML;
+        if (text.length > maxLength) {
+            text = text.substring(0, maxLength) + '...';
+        }
+        descElement.innerHTML = text;
+    });
+});
+    </script>
+</body>
+</html>

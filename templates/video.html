@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- fontawesome link ---- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <section class="our-projects" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" 
+    data-aos-easing="linear">
+        <div class="heading">
+          <h2 data-aos="fade-up" data-aos-duration="350" data-aos-delay="200" 
+          data-aos-easing="linear">{{ translations.get ("Our projects")}}</h2>
+          <p data-aos="fade-up" data-aos-duration="350" data-aos-delay="250" 
+          data-aos-easing="linear">{{ translations.get ("Discover our highlights")}}</p>
+        </div>
+      
+        <div data-am-cardslider>
+          <input type="radio" name="card-slider" id="card-slider-1"/>
+          <input type="radio" name="card-slider" id="card-slider-2" checked/>
+          <input type="radio" name="card-slider" id="card-slider-3"/>
+      
+          <div class="cs-slide-container">
+              <label for="card-slider-1" class="cs-slide">
+                  <div class="cs-slide-content shadow">
+                      <!-- <i top class="fa-solid fa-play play-icon" data-video="card-slider-1"></i> -->
+                      <iframe width="600" height="350" src="https://www.youtube.com/embed/IiiZy0P1m98?si=aATte1CgC4BjH-Vc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+              </label>
+      
+              <label for="card-slider-2" class="cs-slide">
+                  <div class="cs-slide-content shadow">
+                      <!-- <i top class="fa-solid fa-play play-icon" data-video="card-slider-2"></i> -->
+                      <iframe width="600" height="350"  src="https://www.youtube.com/embed/zSH15dIl7D0?si=5zd0hyZGv6OmQxkZ"
+                      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+                  </div>
+              </label>
+              <label for="card-slider-3" class="cs-slide">
+                  <div class="cs-slide-content shadow">
+                      <!-- <i top class="fa-solid fa-play play-icon" data-video="card-slider-3"></i> -->
+                      <iframe  width="600" height="350"  src="https://www.youtube.com/embed/zSH15dIl7D0?si=5zd0hyZGv6OmQxkZ"
+                      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+              </label>
+          </div>
+          <div class="cs-indicator-container">
+              <label for="card-slider-1" class="cs-indicator"></label>
+              <label for="card-slider-2" class="cs-indicator"></label>
+              <label for="card-slider-3" class="cs-indicator"></label>
+          </div>
+      </div>
+      
+      </section>
+
+
+
+    
+    </script>
+
+
+</body>
+</html>

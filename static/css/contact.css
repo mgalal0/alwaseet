@@ -1,0 +1,135 @@
+/* start contact us section --------------------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+ul { 
+    list-style: none;
+}
+
+.contact-us {
+    background-image: url(/static/images/contact/contact-us-bg.png);
+    height: 130vh;
+    background-size: cover;
+    color: #fff;
+    padding: 187px 0 160px 0;
+    /* margin-bottom: 350px; */
+}
+@media(max-width:400px){
+    .contact-us {
+        height: 170vh;
+    }
+}
+/* .contact-us .heading {
+   ;
+} */
+.contact-us h2 {
+    font-size: 78px;
+    line-height: 85px;
+    font-weight: 700;
+}
+.contact-us p {
+    font-size: 44px;
+    line-height: 50px;
+    font-weight: 700; 
+    margin-bottom: 36px;
+}
+.contact-us ul {
+    margin: 0;
+    padding: 0;
+}
+.contact-us li {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    
+}
+.contact-us a {
+    color: #fff;
+}
+.contact-us .img {
+    width: 16.6px;
+}
+.contact-us .img img {
+    width: 100%;
+  
+}
+.contact-us .contact-form {
+    border: 1px solid #FFFFFF3D;
+    background-color: #1C1B1F21;
+    border-radius: 25px;
+    padding: 65px 40px 91px;
+ 
+}
+.contact-us label {
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 5px;
+}
+.contact-us::placeholder{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+.contact-us .name , .contact-us .email {
+    width: 48%;
+}
+.contact-us input  {
+    padding: 24px 24px 24px 27px !important;
+    border-radius: 10px !important;
+    width: 100%;
+}
+.contact-us textarea {
+    padding: 24px !important;
+    min-height: 142px !important;
+    border-radius: 20px;
+}
+.contact-us button {
+    border: none;
+    outline: none;
+    background-color: #001C51;
+    padding: 24px 36px;
+    color: #fff;
+    margin-top: 32px;
+    border-radius: 10px;
+}
+@media(max-width:768px){
+    .contact-us {
+        padding:50px 0;
+    }
+    .contact-us .row {
+        justify-content: center !important;
+    }
+    .contact-us h2 {
+        font-size: 55px;
+    }
+    .contact-us h3 {
+        font-size: 40px;
+    }
+    .contact-us .name , .contact-us .email {
+        width:100%;
+    }
+    .contact-us .contact-form {
+        border: none;
+        background-color: transparent;
+        border-radius: none;
+        padding: 5px 5px 31px;
+    }
+    .contact-us .first-inputs {
+        display: block !important;
+    }
+    .contact-us button {
+        padding: 14px 20px;
+    }
+}

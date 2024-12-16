@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+  
+    <section class="all-jobs d-flex  ">
+        
+        {% include 'dashboard/slider.html' %}
+
+       
+
+        <div class="page-content">
+            <div class="container">
+                <div class="page-name d-flex">
+                    <i class="fa-solid fa-house me-2"></i>
+                    <h6>List Of Jobs</h6>
+                    <br>
+                                <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+                </div>
+            </div>
+            <div class="container container-box">
+                <div class="row g-4 ">
+                    {% for job in jobs %}
+                    <div class="  col-lg-4  job-box ">
+                        <div class="job-card  bg-white shadow d-flex justify-content-between flex-column ">
+                            <div class="upper-divs">
+                                <div class="img d-flex justify-content-between  ">
+                                    {% if job.photo %}
+                                    <div class="job-img">
+                                        <img src="{{ url_for('dashboard.uploaded_file', filename=job.photo.replace('\\', '/')) }}" alt="Job Photo"  class="w-100">
+                                    {% else %}
+                                        No Photo Available
+                                    {% endif %}   
+                                </div>
+                            
+                                     <div class="delete-icon">
+                                        <form method="POST" action="{{ url_for('dashboard.delete_job', job_id=job.id) }}" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="remove-icon"><i class="fa-regular fa-trash-can"></i></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                 <div class="job-name">
+                                    <h4>{{ job.job_name }}</h4>
+                                 </div>
+                                 <div class="job-salary d-flex align-items-center">
+                                    
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.1719 18.9531H5.83854C2.97187 18.9531 1.04688 17.0281 1.04688 14.1615V9.99479C1.04688 7.42812 2.63021 5.5698 5.08854 5.26146C5.32187 5.22813 5.58021 5.20312 5.83854 5.20312H14.1719C14.3719 5.20312 14.6302 5.21146 14.8969 5.25312C17.3552 5.53646 18.9635 7.40313 18.9635 9.99479V14.1615C18.9635 17.0281 17.0385 18.9531 14.1719 18.9531ZM5.83854 6.45312C5.63854 6.45312 5.44687 6.46978 5.25521 6.49478C3.42187 6.72811 2.29687 8.06146 2.29687 9.99479V14.1615C2.29687 16.3115 3.68854 17.7031 5.83854 17.7031H14.1719C16.3219 17.7031 17.7135 16.3115 17.7135 14.1615V9.99479C17.7135 8.04479 16.5719 6.70313 14.7219 6.48647C14.5219 6.45313 14.3469 6.45312 14.1719 6.45312H5.83854Z" fill="#1E1E1E"/>
+                                        <path d="M5.16 6.51537C4.96 6.51537 4.77667 6.42371 4.65167 6.25704C4.51 6.06537 4.49333 5.81537 4.60167 5.60704C4.74333 5.32371 4.94333 5.04871 5.20167 4.79871L7.91 2.08203C9.29333 0.707031 11.5433 0.707031 12.9267 2.08203L14.385 3.55705C15.0017 4.16538 15.3767 4.98205 15.4183 5.84871C15.4267 6.04038 15.3517 6.22369 15.21 6.34869C15.0683 6.47369 14.8767 6.53205 14.6933 6.49871C14.5267 6.47371 14.3517 6.46537 14.1683 6.46537H5.835C5.635 6.46537 5.44333 6.48203 5.25167 6.50703C5.22667 6.51536 5.19333 6.51537 5.16 6.51537ZM6.55167 5.21537H14.0183C13.91 4.93204 13.735 4.67371 13.5017 4.44038L12.035 2.95705C11.1433 2.07371 9.685 2.07371 8.785 2.95705L6.55167 5.21537Z" fill="#1E1E1E"/>
+                                        <path d="M18.3385 14.3802H15.8385C14.5719 14.3802 13.5469 13.3552 13.5469 12.0885C13.5469 10.8219 14.5719 9.79688 15.8385 9.79688H18.3385C18.6802 9.79688 18.9635 10.0802 18.9635 10.4219C18.9635 10.7635 18.6802 11.0469 18.3385 11.0469H15.8385C15.2635 11.0469 14.7969 11.5135 14.7969 12.0885C14.7969 12.6635 15.2635 13.1302 15.8385 13.1302H18.3385C18.6802 13.1302 18.9635 13.4135 18.9635 13.7552C18.9635 14.0969 18.6802 14.3802 18.3385 14.3802Z" fill="#1E1E1E"/>
+                                        </svg>
+
+                                    <h5>{{ job.salary }}</h5>
+                                 </div>
+                                 <div class="desc">
+                                   <p>{{ job.job_title  |  remove_br }}</p>
+                                 </div>
+                            </div>
+                         
+                          
+                             <div class="lower-div ">
+                                <a href="{{ url_for('dashboard.show_job_details', job_id=job.id) }}" class="more-btn"> Watch </a>
+                             </div>
+                             
+                            </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+ 
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'layout.html' %}
+{% from "forms.html" import input %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> {{title}} </title>
+    href ="{{ url_for('static',filename='img/image.jpg') }}
+</head>
+<body>
+{% block body %}
+
+{{ super() }}
+
+    <h1>Hello Guys</h1>
+<p>{{ input('username',placeholder='enter your username') }}</p>
+<p>{{ input('password' ,type='password',placeholder='enter your password') }}</p>
+    <img src="{{ url_for ('static',filename='img/image.jpg') }}">
+
+{% endblock %}
+
+<ul>
+    {% for i in posts %}
+    <li><a href="#"> {{ i }}</a> </li>
+    {% endfor %}
+
+
+</ul>
+
+
+
+</body>
+</html>

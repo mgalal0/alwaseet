@@ -1,0 +1,190 @@
+/* global style ---------- */
+:root {
+    --home-page-bg-color :#070708;
+}
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box; 
+
+}
+body {
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    background-color: var(--home-page-bg-color);
+}
+
+
+li {
+    list-style: none;
+}
+a { 
+    text-decoration: none;
+}
+/* nav Bar------------------------------------------ */
+ .navigation ul li a , .tp {
+    color : #fff !important;
+}
+.navigation ul li a {
+    font-size: 18px !important;
+}
+.navigation li ul a  , .footer li ul a { 
+    color : #FFFFFF  !important ;
+    padding  : 10px 7px ;
+    border: 1px solid transparent ;
+    transition:  border 0.5s ease-in-out;
+    filter: blur(0.5px);    
+    border-radius: 2px;
+  
+
+}
+.navigation li ul a:hover ,.footer li ul a:hover {
+    border: 1px rgba(255, 255, 255, 0.255) solid;
+    margin-left: 6px;
+    filter: blur(0px);
+    background-color: transparent !important;
+
+}
+
+
+.navigation .dropdown-menu , .footer .dropdown-menu { 
+    background-color : rgba(170, 170, 170, 0.104) !important;
+    border: 2px solid #ffffff39 ;
+    padding : 20px 17px;
+    border-radius: 10px;
+}
+
+.navbar {
+    border : 1px ;
+}
+
+.hero .navbar .dropdown-menu a:hover  , .footer .dropdown-menu a:hover {
+    background-color: transparent !important;
+    
+}
+@media(min-width:992px) and (max-width:1190px){
+    .navigation ul li a {
+        font-size: 13px !important;
+    }
+}
+@media(max-width:992px){
+ 
+   .navigation .lang-settings-mob img {
+    width:12% !important ;
+   }
+    .navigation .lang-settings {
+        display: none;
+    }
+.lang-settings-mob {
+        display: block !important;
+    }
+    .navigation .navbar-nav {
+        background-color : rgba(170, 170, 170, 0.104) !important;
+        border: 2px solid #ffffff39 ;
+        padding : 20px 17px;
+        border-radius: 10px;
+    }
+}
+
+/* start footer section ---- */
+.footer {
+    padding: 84px 0 43px;
+  
+}
+.footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer .footer-content .links {
+    width: 50%;
+}
+.footer .footer-content .footer-links {
+    margin: auto;
+    
+}
+.footer .footer-content .media {
+    gap : 12px;
+
+}
+.footer ul li a {
+    color: #fff !important;
+}
+.footer .dropdown-menu {
+    background-color: transparent !important;
+}
+ .footer .media div  {
+    width: 36px;
+    height: 36px;
+    background: #001C51;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .footer-menu {
+  background-color: #000 !important;
+}
+.footer .footer-content .social-media-links .footer-logo-mob{
+    display: none !important;
+}
+.footer.footer-bottom {
+    padding: 8px 0 51px;
+}
+.footer p {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 23px;
+}
+/* media query for footer section --------------------------- */
+@media(max-width:992px){
+    .footer .footer-content {
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+    .footer .footer-content .social-media-links .footer-logo-mob {
+        display: block !important;
+    }
+    .footer .footer-content >  .footer-logo {
+        display: none;
+    }
+    .footer .links ul {
+        flex-direction:column;
+        padding:0 ;
+        margin:0;
+    }
+    .footer.footer-bottom {
+        margin-top: 30px;
+    }
+    .footer .social-media-links {
+        align-items: center;
+        width: 100%;
+    }
+}
+@media (max-width : 992px) {
+    .lang { 
+        display : none ;
+    }
+    .mob-lang{
+         display: block  ;
+    }
+
+    .navigation li ul a { 
+        color : #FFFFFF  !important ;
+        padding  : 2px 3px !important;
+        border: 1px solid transparent ;
+        transition:  border 0.5s ease-in-out;
+        filter: blur(0);    
+        border-radius: 2px;
+        font-size: 10px;
+    }
+    .navbar-nav {
+        width: 100% !important;
+    }
+    
+    .footer p {
+        text-align: center;
+}
+}

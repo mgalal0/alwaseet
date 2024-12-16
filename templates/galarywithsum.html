@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/componets.css') }}">
+    <title>Document</title>
+</head>
+<body>
+{% if request.cookies.get('lang') == 'en' %}
+<html dir="ltr"> 
+{% elif request.cookies.get('lang') == 'ar' %}
+<!-- <html dir="rtl"> -->
+<style>
+    @media(max-width:1080px){
+        .serv .content {
+        padding : 0 20px 0 5px !important;
+    }
+    }
+</style>
+{% endif %}
+
+<div class="serv-heading" data-aos="fade-up" data-aos-duration="300" data-aos-delay="100"  data-aos-easing="ease-out-cubic">
+    <h2 class="">
+      {{ translations.get("Our Primary Services") }}
+    </h2>
+    
+    <p >
+    {{ translations.get("We always provide the best possible solutions") }}
+    </p>
+    </div>
+    
+<section class="serv" data-aos="fade-up" data-aos-duration="300" data-aos-delay="150"  data-aos-easing="ease-out-cubic">
+    
+    <div class="overlay"></div>
+    <div  class="content-container d-flex">
+        <!-- Vec -->
+        {% if request.cookies.get('lang') == 'en' %}
+        <style>
+               @media(max-width:767px){
+                                .main-vector {
+                                    margin-left: 0px !important;
+                                }
+                            }
+                            @media(min-width:768px) {
+                                .main-vector {
+                                    margin-left: 49px !important;
+                                }
+                                
+                            }
+                            @media (min-width:768px) and (max-width:1024px){
+                                .serv .content {
+                                    padding-left: 45px !important;
+                                }
+                            }
+                            
+        </style>
+        <div class="main-vector">
+            <div class="line"></div>
+            {% for image_filename in image_filenames %}
+                <div class="vector" id="vector{{ loop.index }}" data-index="{{ loop.index0 }}">
+                    <div class="vector-2"></div>
+                </div>
+                {% endfor %}
+</div>
+
+                {% elif request.cookies.get('lang') == 'ar' %}
+               
+            <div style="margin-right: 49px; margin-left:0 !important" class="main-vector">
+                <style>
+                    @media(max-width:767px){
+                             .main-vector {
+                                 margin-right: 0px !important;
+                             }
+                         }
+                         @media(min-width:768px) {
+                                .main-vector {
+                                    margin-right: 49px !important;
+                                }
+                            }
+                            @media (min-width:768px) and (max-width:1024px){
+                                .serv .content {
+                                    padding-right: 45px !important;
+                                }
+                            }
+             </style>
+            <div class="line"></div>
+            {% for image_filename in image_filenames %}
+                <div class="vector" id="vector{{ loop.index }}" data-index="{{ loop.index0 }}">
+                    <div class="vector-2"></div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            
+
+        <div  class="content">
+            <div class="repeated">
+                {% if request.cookies.get('lang') == 'en' %}
+                <style>
+                    .content {
+                        text-align: left !important;
+                    }
+
+                </style>
+                    {% set translations_galary = translations_galary.en %}
+                {% elif request.cookies.get('lang') == 'ar' %}
+                <style>
+                                        .content {
+                        text-align: right !important;
+                    }
+                </style>
+                    {% set translations_galary = translations_galary.ar %}
+                {% endif %}
+
+                <div  class="caption-container">
+                    {% for key, value in translations_galary.items() %}
+                        <div style="right: 29px !important; direction: rtl !important;" class="caption">
+                            <h3 id="key" class="wow animate__slideInDown" data-wow-duration="2s" data-wow-delay="3.5s">{{ key }}</h3>
+                            <p id="value" class="wow animate__zoomIn" data-wow-duration="2s" data-wow-delay="3.8s">{{ value }}
+                                <br>
+                                {% if request.cookies.get('lang') == 'en' %}
+                                <a  style="color : white;" href="/contact-us">
+                                <button  class="slider-btn">
+                                  Contact Us
+                                    </button>
+                                </a>
+                                {% elif request.cookies.get('lang') == 'ar' %}
+                                <a  style="color : white;" href="/contact-us">
+                                <button class="slider-btn">تواصل معنا</button>
+                            </a>
+
+                                {% endif %}
+
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  class="thumbnail">
+        <div  class="main-card">
+            {% for image_filename in image_filenames %}
+                <div class="item">
+                    <div class="layer"></div>
+                    <img src="{{ image_filename | static }}" alt="">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% if request.cookies.get('lang') == 'en' %}
+
+    <div  class="buttons w-100 ">
+        <div    class="main-r row justify-content-between w-100 ">
+            <div class="control-btns col-md-5 ms-4 ">
+                <button><i class="fa-solid fa-arrow-left" id="prevButton"></i></button>
+                <button><i class="fa-solid fa-arrow-right" id="nextButton"></i></button>
+            </div>
+
+            <div  class="main-range col-md-4 ">
+                <h4 class="">1</h4>
+                <div class="range">
+                    <div class="range-value"></div>
+                </div>
+                <h4 class="">{{ image_filenames | length }}</h4>
+            </div>
+        </div>
+    </div>
+
+    {% elif request.cookies.get('lang') == 'ar' %}
+    
+    <style>
+        @media (max-width: 880px) {
+            .main-range {
+        transform: translateX(0%) !important;
+    }
+    }
+</style>
+
+    <div  class="buttons w-100 ">
+        <div  class="main-r row justify-content-between w-100">
+            <div  style="margin-right: 15%; "  class="control-btns col-md-5 ms-4 ">
+                <button><i class="fa-solid fa-arrow-right" id="prevButton"></i></button> 
+                <button><i class="fa-solid fa-arrow-left" id="nextButton"></i></button>
+            </div>
+            <div  class="main-range col-md-4 "  style="transform:translateX(-250%); direction: rtl !important;">
+
+                <h4 class="">1</h4>
+                <div class="range">
+                    <div class="range-value"></div>
+                </div>
+                <h4 class="">{{ image_filenames | length }}</h4>
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    
+
+
+</section>
+
+
+</body>
+</html>

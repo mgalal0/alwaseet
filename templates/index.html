@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    {% if request.cookies.get('lang') == 'en' %}
+    <title>{{ page_title.en }}</title>
+{% else %}
+    <!-- Arabic title -->
+    <title>{{ page_title.ar }}</title>
+{% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    
+    
+     <!-- bootstrap link ------- -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+     <!-- owl-carousel ------------ -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+ {% if request.cookies.get('lang') == 'en' %}
+ <!-- English meta tags -->
+ <meta name="description" content="{{ meta_tag.en.description }}">
+ <meta name="keywords" content="{{ meta_tag.en.keywords }}">
+{% else %}
+ <!-- Arabic meta tags -->
+ <meta name="description" content="{{ meta_tag.ar.description }}">
+ <meta name="keywords" content="{{ meta_tag.ar.keywords }}">
+{% endif %}
+
+
+ <!-- CAIRO FONT  -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
+
+ <!-- Font Changer -->
+ {% if request.cookies.get('lang') == 'en' %}
+ <html dir="ltr"> 
+   {% elif request.cookies.get('lang') == 'ar' %}
+   <html dir="rtl">
+    <style>
+      *{
+        font-family: 'Cairo', sans-serif;
+    }
+    .our-team .caption {
+      right:29px !important;
+    }
+  
+    </style>
+     {% endif %}
+
+<!-- End Font Changer -->
+    {% include 'layout.html' %}
+</head>
+
+
+
+<body>
+  {% include 'spinner.html' %}
+  <main class="body-content">
+    <div class="hero">
+      <div class="overlay">
+  {% include 'nav.html' %}
+      
+</div>
+  </div>
+
+<!-- About us ! -->
+<section class="about-us  d-flex flex-column  justify-content-center align-items-center " id="about-us" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" 
+ data-aos-easing="linear">
+  <div class="container text-white">
+<div class="row align-items-center  justify-content-center  ">
+<div class="col-lg-4">
+<div class="heading">
+  <h2 data-aos="flip-up" data-aos-duration="400" data-aos-delay="200"  data-aos-easing="linear">{{ translations.get("About Us")}}</h2>
+</div>
+<div class="slogan slogan-mob d-none">
+<h3>
+ {{ translations.get("slogan") }} 
+</h3>
+</div>
+
+</div>
+
+<div class="col-lg-8 mt-2">
+  <div class="ph">
+
+      <p>
+{{ translations.get("pabout")}}
+
+      </p>
+  </div>
+</div>
+
+
+</div>
+
+
+  </div>
+  <div class="slogan">
+      <h3 data-aos="flip-up" data-aos-duration="400" data-aos-delay="200"  data-aos-easing="linear">
+       {{ translations.get("slogan") }} 
+      </h3>
+      </div>
+      
+
+
+  </section>
+
+<!-- End About us  -->
+
+
+
+
+
+{% include 'galarywithsum.html' %}
+
+
+  <div class="iiii ">
+    {% for _ in range(4) %}
+<div class="main-squares">
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+<div class="sqaure-color-up "></div>
+
+
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+
+
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+<div class="squares"></div>
+
+
+
+
+
+
+</div>
+{% endfor %}
+
+
+
+<div class="iii">
+
+{% include 'video.html' %}
+{% include 'video2.html' %}
+{% include 'album.html' %}
+
+<!-- start our clients section ----- -->
+<section  class="our-clients " data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" 
+data-aos-easing="linear">
+<div class="container">
+  <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" 
+  data-aos-easing="linear">{{ translations.get("Our Clients") }}</h2>
+  <div class="main-clients d-flex justify-content-center align-items-center">
+     <div class="logo">
+      <img src="{{ url_for('static', filename='images/main-logo-1.svg') }}" alt="">
+     </div>
+     <div class="logo">
+      <img src="{{ url_for('static', filename='images/main-logo-2.svg') }}" alt="">
+     </div>
+     <div class="logo">
+      <img src="{{ url_for('static', filename='images/main-logo-3.svg') }}" alt="">
+     </div>
+  </div>
+  <div class="logos" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250" 
+  data-aos-easing="linear">
+    <div class="logos-slide">
+      <img src="{{ url_for('static', filename='images/logos/logo-1.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-2.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-3.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-4.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-5.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-6.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-7.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-8.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-9.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-10.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-11.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-12.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-13.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-14.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-15.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-16.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-17.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-18.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-19.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-20.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-21.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-.22svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-23.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-24.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-25.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-26.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-27.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-28.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-1.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-2.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-3.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-4.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-5.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-6.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-7.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-8.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-9.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-10.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-11.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-12.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-13.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-14.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-15.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-16.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-17.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-18.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-19.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-20.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-21.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-.22svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-23.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-24.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-25.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-26.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-27.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-28.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-1.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-2.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-3.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-4.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-5.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-6.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-7.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-8.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-9.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-10.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-11.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-12.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-13.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-14.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-15.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-16.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-17.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-18.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-19.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-20.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-21.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-.22svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-23.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-24.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-25.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-26.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-27.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-28.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-1.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-2.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-3.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-4.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-5.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-6.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-7.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-8.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-9.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-10.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-11.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-12.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-13.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-14.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-15.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-16.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-17.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-18.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-19.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-20.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-21.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-.22svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-23.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-24.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-25.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-26.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-27.svg') }}" alt="">
+      <img src="{{ url_for('static', filename='images/logos/logo-28.svg') }}" alt="">
+    </div>  
+  </div>
+ 
+</div>
+
+
+</section>
+
+ <!-- start our-team-section ------ -->
+ <section style="z-index: 100;" class="our-team" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" 
+ data-aos-easing="linear">
+  <div class="container">
+      <div class="heading  m-auto">
+          
+          <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" 
+          data-aos-easing="linear"> {{ translations.get("Al Waseet Team") }} </h2>
+          <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="250" 
+          data-aos-easing="linear">{{ translations.get("pteam") }}</p>
+      </div>
+      <div class="row our-team-member  ">
+        <div class="col-md-6 col-lg-4  ">
+          
+            <div class="team-member w-100 " data-aos="zoom-out-up" data-aos-duration="500" data-aos-delay="150" 
+            data-aos-easing="linear">
+              <div class="overlay"></div>
+              <img src="{{ url_for('static', filename='images/member-1.png') }}" alt="Dr. Mohamed Qutub" class="w-100"  >
+              <div class="caption ">
+            <h4>{{translations.get("Dr. Mohamed Qutub") }}</h4>
+                <h5>{{ translations.get("Chief Executive Officer") }}</h5>
+              </div>
+           </div>
+        </div>
+        <div class="col-md-6 col-lg-4   ">
+          <div class="team-member w-100  " data-aos="zoom-out-up" data-aos-duration="500" data-aos-delay="200" 
+          data-aos-easing="linear">
+            <div class="overlay"></div>
+            <img src="{{ url_for('static', filename='images/member-2.png') }}" alt="Mr. Raed Ali Elashry" class="w-100"  >
+            <div class="caption">
+              <h4>{{ translations.get("Mr. Raed Ali Elashry") }}</h4>
+              <h5>{{translations.get("General Manager")}}</h5>
+            </div>
+         </div>
+      
+      </div>
+      <div class="col-md-6 col-lg-4   ">
+        <div class="team-member w-100 " data-aos="zoom-out-up" data-aos-duration="500" data-aos-delay="250" 
+        data-aos-easing="linear">
+          <div class="overlay"></div>
+          <img src="{{ url_for('static', filename='images/member-3.png') }}" alt="Mr. Ahmed Attar" class="w-100"  >
+          <div class="caption ">
+            <h4>{{translations.get("Mr. Ahmed Attar")}}</h4>
+            <h5>{{translations.get("Executive Manager")}}</h5>
+          </div>
+       </div>
+    
+    </div>
+    <div class="col-md-6 col-lg-4  ">
+      <div class="team-member w-100" data-aos="zoom-out-up" data-aos-duration="500" data-aos-delay="300" 
+      data-aos-easing="linear">
+        <div class="overlay"></div>
+        <img src="{{ url_for('static', filename='images/member-4.png') }}" alt="Mr. Magdi Almass" class="w-100"  >
+        <div class="caption ">
+          <h4>{{translations.get("Mr. Magdi Almass")}}</h4>
+      <h5>{{translations.get("Operation Manager")}}</h5>
+        </div>
+     </div>
+  </div>
+  <div class="col-md-6 col-lg-4  ">
+    <div class="team-member w-100 " data-aos="zoom-out-up" data-aos-duration="500" data-aos-delay="350" 
+    data-aos-easing="linear">
+      <div class="overlay"></div>
+      <img src="{{ url_for('static', filename='images/member-5.png') }}" alt="Mr. Stanley van der Merwe" class="w-100"  >
+      <div class="caption ">
+      <h4>{{translations.get("Mr. Stanley van der Merwe")}}</h4>
+        <h5>{{translations.get("Crowd Monagement Co-Ordinator")}}</h5>
+      </div>
+   </div>
+</div>
+<div class="col-md-6 col-lg-4  ">
+  <div class="team-member w-100" data-aos="zoom-out-up" data-aos-duration="500" data-aos-delay="250" 
+  data-aos-easing="linear">
+    <div class="overlay"></div>
+    <img src="{{ url_for('static', filename='images/member-6.png') }}" alt="Mr. Stanley van der Merwe" class="w-100"  >
+    <div class="caption ">
+    <h4>{{translations.get("Mr. Salem Saeed Al-Zahrani")}}</h4>
+      <h5>{{ translations.get("Security Manager")}}</h5>
+    </div>
+ </div>
+</div>
+
+</div>
+
+
+
+
+<div style="direction: ltr !important;" class="owl-carousel owl-theme our-team-slider">
+<div  style="direction: ltr !important;" class="item">  
+  <div class="team-member w-100 " >
+    <div class="overlay"></div>
+    <img src="{{ url_for('static', filename='images/member-1.png') }}" alt="Dr. Mohamed Qutub" class="w-100"  >
+    <div style="text-align: right !important;" class="caption ">
+      <h4>{{translations.get("Dr. Mohamed Qutub") }}</h4>
+      <h5>{{ translations.get("Chief Executive Officer") }}</h5>
+    </div>
+ </div>
+</div>
+<div class="item"> 
+   <div class="team-member w-100  ">
+  <div class="overlay"></div>
+  <img src="{{ url_for('static', filename='images/member-2.png') }}" alt="Mr. Raed Ali Elashry" class="w-100"  >
+  <div style="text-align: right !important;" class="caption">
+    <h4>{{ translations.get("Mr. Raed Ali Elashry") }}</h4>
+    <h5>{{translations.get("General Manager")}}</h5>
+  </div>
+</div></div>
+<div class="item">
+  <div class="team-member w-100 ">
+    <div class="overlay"></div>
+    <img src="{{ url_for('static', filename='images/member-3.png') }}" alt="Mr. Ahmed Attar" class="w-100"  >
+    <div style="text-align: right !important;"  class="caption ">
+      <h4>{{translations.get("Mr. Ahmed Attar")}}</h4>
+      <h5>{{translations.get("Executive Manager")}}</h5>
+    </div>
+ </div>
+</div>
+<div class="item">   <div class="team-member w-100  ">
+  <div class="overlay"></div>
+  <img src="{{ url_for('static', filename='images/member-4.png') }}" alt="Mr. Magdi Almass" class="w-100"  >
+  <div style="text-align: right !important;" class="caption ">
+    <h4>{{translations.get("Mr. Magdi Almass")}}</h4>
+    <h5>{{translations.get("Operation Manager")}}</h5>
+  </div>
+</div></div>
+<div class="item">
+  <div class="team-member w-100  ">
+    <div class="overlay"></div>
+    <img src="{{ url_for('static', filename='images/member-5.png') }}" alt="Mr. Stanley van der Merwe" class="w-100"  >
+    <div style="text-align: right !important;" class="caption ">
+      <h4>{{translations.get("Mr. Stanley van der Merwe")}}</h4>
+        <h5>{{translations.get("Crowd Monagement Co-Ordinator")}}</h5>
+    </div>
+ </div>
+</div>
+<div class="item">
+  <div class="team-member w-100  ">
+    <div class="overlay"></div>
+    <img src="{{ url_for('static', filename='images/member-6.png') }}" alt="Mr. Stanley van der Merwe" class="w-100"  >
+    <div style="text-align: right !important;" class="caption ">
+      <h4>{{translations.get("Mr. Salem Saeed Al-Zahrani")}}</h4>
+      <h5>{{ translations.get("Security Manager")}}</h5>
+    </div>
+ </div>
+</div>
+  </div>
+</section>
+
+{% include 'footer.html' %}
+
+
+
+</div>
+</div>
+  </main>
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" 
+integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+   crossorigin="anonymous"></script>
+
+</body>
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const videoContainer = document.querySelector('.video-container');
+      const videoCards = document.querySelectorAll('.video-card');
+      const paginationBullets = document.querySelectorAll('.bollet');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      let currentIndex = 0;
+      // Function to show the current video
+      function showCurrentVideo() {
+          videoCards.forEach((card, index) => {
+              if (index >= currentIndex && index < currentIndex + 3) {
+                  card.style.display = 'block';
+              } else {
+                  card.style.display = 'none';
+              }
+          });
+
+          // Update pagination bullets
+          paginationBullets.forEach((bullet, index) => {
+              if (index === currentIndex) {
+                  bullet.classList.add('active');
+              } else {
+                  bullet.classList.remove('active');
+              }
+          });
+      }
+  
+      // Show the initial videos
+      showCurrentVideo();
+  
+      // Handle click on previous button
+      prevBtn.addEventListener('click', function() {
+          if (currentIndex > 0) {
+              currentIndex -= 1;
+              showCurrentVideo();
+          }
+      });
+
+  
+      // Handle click on next button
+      nextBtn.addEventListener('click', function() {
+          if (currentIndex < videoCards.length - 3) {
+              currentIndex += 1;
+              showCurrentVideo();
+          }
+      });
+  
+      // Handle click on pagination bullets
+      paginationBullets.forEach((bullet, index) => {
+          bullet.addEventListener('click', function() {
+              currentIndex = index;
+              showCurrentVideo();
+          });
+      });
+  });
+  
+  
+  </script>
+ 
+
+
+
+<!-- Script for video  -->
+ <script>
+  const playIcons = document.querySelectorAll('.play-icon');
+  const videos = document.querySelectorAll('video');
+  
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('play-icon')) {
+      const videoIndex = Array.prototype.indexOf.call(playIcons, e.target);
+      videos[videoIndex].play();
+      e.target.style.display = 'none';
+      videos[videoIndex].addEventListener('ended', () => {
+        e.target.style.display = 'block';
+      });
+    }
+  });
+  </script>
+
+<!--  Galary With Sum -->
+ <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var currentIndex = 0;
+      var translationHeaders = document.querySelectorAll('.content h3');
+      var translationParagraphs = document.querySelectorAll('.content p');
+      var cards = document.querySelectorAll('.thumbnail .item');
+      var container = document.querySelector('.serv');
+      var rangeNumber = document.querySelector('.main-range h4');
+      var vectors = document.querySelectorAll('.vector');
+      var backgroundImages = [
+          'url("/static/images/background/1.png")',
+          'url("/static/images/background/2.png")',
+          'url("/static/images/background/3.png")',
+          'url("/static/images/background/4.png")'
+      ];
+
+      function displayTranslation(index) {
+        translationHeaders.forEach(function(header) {
+            header.style.display = 'none';
+        });
+        translationParagraphs.forEach(function(paragraph) {
+            paragraph.style.display = 'none';
+        });
+
+        translationHeaders[index].style.display = 'block';
+        translationParagraphs[index].style.display = 'block';
+    }
+
+    function updateImage(index) {
+        var totalCards = cards.length;
+        var newIndex = (index + totalCards) % totalCards;
+
+        container.style.backgroundImage = backgroundImages[newIndex];
+        currentIndex = newIndex;
+
+        // Move the selected card to the first position without transition
+        var selectedCard = cards[newIndex];
+        var parent = selectedCard.parentNode;
+
+        // Remove transition to avoid animation while moving the card
+        selectedCard.style.transition = 'none';
+
+        // Move the selected card to the first position
+        parent.insertBefore(selectedCard, parent.firstChild);
+
+        // Force a reflow to make sure the browser registers the position change
+        selectedCard.offsetHeight; // This line forces a reflow
+
+        // Reset all cards' styles
+        cards.forEach(function(card) {
+            card.style.transform = 'scale(0.9)';
+            card.style.transition = 'transform 0.5s';
+        });
+
+        // Scale up the first card with a delay
+        setTimeout(function() {
+            selectedCard.style.transform = 'scale(1.1)';
+            selectedCard.style.transition = 'transform 0.5s';
+        }, 50); // Small delay to ensure the transition is applied after moving
+
+        // Update vectors' outline
+        vectors.forEach(function(vector, i) {
+            vector.querySelector('.vector-2').style.outlineWidth = i === currentIndex ? '10px' : '5px';
+        });
+
+        displayTranslation(currentIndex);
+        rangeNumber.textContent = currentIndex + 1;
+        updateRangeValueWidth(currentIndex);
+    }
+
+    function updateRangeValueWidth(index) {
+        var totalCards = backgroundImages.length;
+        var widthPercentage = (index + 1) / totalCards * 100;
+        document.querySelector('.range-value').style.width = widthPercentage + '%';
+    }
+
+    displayTranslation(0);
+
+    document.getElementById("nextButton").addEventListener("click", function() {
+        updateImage(currentIndex + 1);
+    });
+
+    document.getElementById("prevButton").addEventListener("click", function() {
+        updateImage(currentIndex - 1);
+    });
+
+    vectors.forEach(function(vector, index) {
+        vector.addEventListener("click", function() {
+            updateImage(index);
+        });
+    });
+
+    // Initial setup
+    updateImage(0);
+});
+
+</script>
+ 
+<!--  End  -->
+
+
+
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>
+
+</html>

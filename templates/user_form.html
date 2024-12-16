@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    <h1>User Form</h1>
+    
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <!-- User form -->
+          <form method="POST" enctype="multipart/form-data">
+            <div class="row g-5">
+                <div class="col-md-5">
+                    <label for="first_name">first name</label>
+                    <input type="text" name="first_name" placeholder="Your first Name" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" required placeholder="Your Last Name" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="gender">Gender</label>
+                    <select name="gender"  required class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                </div>
+                <div class="col-md-5">
+                    <label for="">date of birth</label>
+                    <input type="date" name="date_of_birth" required class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="">Nationality </label>
+                    <input type="text" name="nationality" required class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="">country </label>
+                    <input type="text" name="country" required class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="">Years of Experience</label>
+                    <input type="number" name="years_of_experience" required class="form-control">
+
+                </div>
+                <div class="col-md-5">
+                    <label for="">Education Level</label>
+                    <input type="text" name="education_level" required class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="">Email</label>
+                    <input type="email" name="email" required class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="">Contact Number</label>
+                    <input type="tel" name="contact_number" placeholder="+966" required class="form-control">
+
+                </div>
+                <div class="col-md-5">
+                    <label for="">Upload CV</label>
+                    <input type="file" name="cv" accept=".pdf,.doc,.docx" required class="form-control custom-file-input">
+
+                </div>
+                <div class="col-md-5  d-flex flex-column justify-content-end">
+                  
+                    <button class="w-100">Send</button>
+                </div>
+            </div>
+        </form></body>
+</html>

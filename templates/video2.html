@@ -1,0 +1,74 @@
+
+
+<section class="our-projects-mob ">
+  <div class="heading">
+    <h2>{{ translations.get ("Our projects")}}</h2>
+    <p>{{ translations.get ("Discover our highlights")}}</p>
+  </div>
+  <div class="slideshow-container">
+
+    <div class="mySlides fedx">
+
+      <iframe poster="/static/images/background/1.png"  height="350"  src="https://www.youtube.com/embed/zSH15dIl7D0?si=5zd0hyZGv6OmQxkZ"
+      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    </div>
+    
+    <div class="mySlides fedx">
+    
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vSfpLQJbIrc?si=_OtyVKwwhRl1yLiL" title="YouTube video player" frameborder="0"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      
+    </div>
+    
+    <div class="mySlides fedx">
+     
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/moQtMet7F7w?si=2aHMaiao5QA8kL_L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+       referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+     
+    </div>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+</section>
+
+
+
+
+    <script>
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+        
+          </script>
